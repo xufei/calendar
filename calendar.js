@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 export default class Calendar {
 	constructor(year, month) {
@@ -8,7 +8,11 @@ export default class Calendar {
 
 	static months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
 	static weekdays = ["日", "一", "二", "三", "四", "五", "六"];
-	
+
+	get year() {
+		return this._year;
+	}
+
 	set year(val) {
 		this._year = val;
 		
@@ -19,13 +23,15 @@ export default class Calendar {
 			this.years.push(startIndex + year);
 		}
 	}
+
+	get month() {
+		return this._month;
+	}
 	
 	set month(val) {
 		this._month = val;
 		
-		this.calendar = [
-			[]
-		];
+		this.calendar = [];
 
 		let offset = new Date(new Date(this._year, val, 1)).getDay();
 		let lastDay = new Date(new Date(this._year, val + 1, 1) - 1);
@@ -36,5 +42,13 @@ export default class Calendar {
 			}
 			this.calendar[Math.floor(day / 7)][day % 7] = day - offset + 1;
 		}
+	}
+
+	previousMonth() {
+		this.month--;
+	}
+
+	nextMonth() {
+		this.month++;
 	}
 }
