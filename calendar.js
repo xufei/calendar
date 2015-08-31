@@ -6,9 +6,6 @@ export default class Calendar {
 		this.month = month;
 	}
 
-	static months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
-	static weekdays = ["日", "一", "二", "三", "四", "五", "六"];
-
 	get year() {
 		return this._year;
 	}
@@ -52,3 +49,6 @@ export default class Calendar {
 		this.month++;
 	}
 }
+
+Calendar.months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+Calendar.weekdays = ["日", "一", "二", "三", "四", "五", "六"];
