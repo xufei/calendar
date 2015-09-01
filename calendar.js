@@ -2,6 +2,11 @@
 
 export default class Calendar {
 	constructor(year, month) {
+		this.years = [];
+		this.months = Calendar.months;
+		this.weekdays = Calendar.weekdays;
+		this.days = [];
+
 		this.year = year;
 		this.month = month;
 	}
@@ -12,8 +17,8 @@ export default class Calendar {
 
 	set year(val) {
 		this._year = val;
-		
-		this.years = [];
+
+		this.years.length = 0;
 		let startIndex = Math.floor(val / 10) * 10 + 1;
 
 		for (let year = 0; year < 10; year++) {
@@ -24,21 +29,39 @@ export default class Calendar {
 	get month() {
 		return this._month;
 	}
-	
+
 	set month(val) {
 		this._month = val;
-		
-		this.calendar = [];
+
+		this.days.length = 0;
 
 		let offset = new Date(new Date(this._year, val, 1)).getDay();
 		let lastDay = new Date(new Date(this._year, val + 1, 1) - 1);
 
 		for (let day = offset; day < lastDay.getDate() + offset; day++) {
-			if (this.calendar[Math.floor(day / 7)]) {
-				this.calendar[Math.floor(day / 7)] = [];
+			if (!this.days[Math.floor(day / 7)]) {
+				this.days[Math.floor(day / 7)] = [];
 			}
-			this.calendar[Math.floor(day / 7)][day % 7] = day - offset + 1;
+			this.days[Math.floor(day / 7)][day % 7] = day - offset + 1;
 		}
+	}
+
+	previousAge() {
+		this.year-=10;
+	}
+
+	nextAge() {
+		this.year+=10;
+	}
+
+	previousYear() {
+		this.year++;
+		this.month = this.month;
+	}
+
+	nextYear() {
+		this.year--;
+		this.month = this.month;
 	}
 
 	previousMonth() {
