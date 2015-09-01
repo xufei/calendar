@@ -43,7 +43,8 @@ export default class Calendar {
 			if (!this.days[Math.floor(day / 7)]) {
 				this.days[Math.floor(day / 7)] = [];
 			}
-			this.days[Math.floor(day / 7)][day % 7] = day - offset + 1;
+
+			this.days[Math.floor(day / 7)][day % 7] = new Day(new Date(this.year, this.month, day - offset + 1), {});
 		}
 	}
 
@@ -76,3 +77,10 @@ export default class Calendar {
 
 Calendar._months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
 Calendar._weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+
+class Day {
+	constructor(date, data) {
+		this.date = date;
+		this.data = data;
+	}
+}
