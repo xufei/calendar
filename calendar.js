@@ -1,10 +1,13 @@
 "use strict";
 
 export default class Calendar {
+	static _months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+	static _weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+
 	constructor(year, month) {
 		this.years = [];
-		this.months = Calendar.months;
-		this.weekdays = Calendar.weekdays;
+		this.months = Calendar._months;
+		this.weekdays = Calendar._weekdays;
 		this.days = [];
 
 		this.year = year;
@@ -72,6 +75,3 @@ export default class Calendar {
 		this.month++;
 	}
 }
-
-Calendar.months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
-Calendar.weekdays = ["日", "一", "二", "三", "四", "五", "六"];
