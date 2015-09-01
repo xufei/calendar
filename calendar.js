@@ -1,14 +1,15 @@
 "use strict";
 
 export default class Calendar {
-	constructor(year, month) {
+	constructor() {
 		this.years = [];
 		this.months = Calendar._months;
 		this.weekdays = Calendar._weekdays;
 		this.days = [];
 
-		this.year = year;
-		this.month = month;
+		var now = new Date();
+		this._year = now.getFullYear();
+		this._month = now.getMonth();
 	}
 
 	get year() {
