@@ -44,7 +44,7 @@ export default class Calendar {
 				this.days[Math.floor(day / 7)] = [];
 			}
 
-			this.days[Math.floor(day / 7)][day % 7] = new Day(new Date(this.year, this.month, day), {});
+			this.days[Math.floor(day / 7)][day % 7] = new Day(new Date(this.year, this.month, day - offset), {});
 		}
 	}
 
