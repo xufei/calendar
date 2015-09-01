@@ -8,8 +8,8 @@ export default class Calendar {
 		this.days = [];
 
 		var now = new Date();
-		this._year = now.getFullYear();
-		this._month = now.getMonth();
+		this.year = now.getFullYear();
+		this.month = now.getMonth();
 	}
 
 	get year() {
