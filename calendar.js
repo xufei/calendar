@@ -6,11 +6,12 @@ export default class Calendar {
 		this.months = Calendar._months;
 		this.weekdays = Calendar._weekdays;
 		this.days = [];
+		this.dateMap = new Map();
 
 		var now = new Date();
 		this.year = now.getFullYear();
 		this.month = now.getMonth();
-		//this.date = this.days.find(d => d.date.getDate()==now.getDate());
+		this.date = this.dayMap.get(now.getDate());
 	}
 
 	get year() {
@@ -31,17 +32,21 @@ export default class Calendar {
 	set month(val) {
 		this._month = val;
 
-		this.days.length = 0;
-
 		let offset = new Date(new Date(this._year, val, 1)).getDay();
 		let lastDay = new Date(new Date(this._year, val + 1, 1) - 1);
 
+		this.days = [];
+		this.dayMap = new Map();
+
 		for (let day = offset; day < lastDay.getDate() + offset; day++) {
+			var dayObj = new Day(new Date(this.year, this.month, day - offset + 1), {});
+
 			if (!this.days[Math.floor(day / 7)]) {
 				this.days[Math.floor(day / 7)] = [];
 			}
 
-			this.days[Math.floor(day / 7)][day % 7] = new Day(new Date(this.year, this.month, day - offset + 1), {});
+			this.days[Math.floor(day / 7)][day % 7] = dayObj;
+			this.dayMap.add(day - offset + 1, dayObj);
 		}
 	}
 
