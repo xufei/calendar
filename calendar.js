@@ -19,12 +19,8 @@ export default class Calendar {
 	set year(val) {
 		this._year = val;
 
-		this.years.length = 0;
 		let startIndex = Math.floor(val / 10) * 10 + 1;
-
-		for (let year = 0; year < 10; year++) {
-			this.years.push(startIndex + year);
-		}
+		this.years = Array.from(Array(10), (v, k) => startIndex + 10);
 	}
 
 	get month() {
