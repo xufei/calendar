@@ -20,7 +20,7 @@ export default class Calendar {
 		this._year = val;
 
 		let startIndex = Math.floor(val / 10) * 10 + 1;
-		this.years = Array.from(Array(10), (v, k) => startIndex + 10);
+		this.years = Array.from(Array(10), (v, k) => k + startIndex);
 	}
 
 	get month() {
