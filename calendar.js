@@ -93,4 +93,8 @@ class Day {
 		this.date = date;
 		this.data = data;
 	}
+
+	valueOf() {
+		return this.date.valueOf();
+	}
 }
