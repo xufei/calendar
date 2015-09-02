@@ -53,12 +53,12 @@ export default class Calendar {
 	}
 
 	previousYear() {
-		this.year++;
+		this.year--;
 		this.month = this.month;
 	}
 
 	nextYear() {
-		this.year--;
+		this.year++;
 		this.month = this.month;
 	}
 
