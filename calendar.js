@@ -10,6 +10,7 @@ export default class Calendar {
 		var now = new Date();
 		this.year = now.getFullYear();
 		this.month = now.getMonth();
+		this.date = this.days.find(d => d.date.getDate()==now.getDate());
 	}
 
 	get year() {
