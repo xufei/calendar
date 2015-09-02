@@ -11,7 +11,7 @@ export default class Calendar {
 		var now = new Date();
 		this.year = now.getFullYear();
 		this.month = now.getMonth();
-		this.date = this.dayMap.get(now.getDate());
+		this.date = this.dateMap.get(now.getDate());
 	}
 
 	get year() {
