@@ -44,6 +44,14 @@ export default class Calendar {
 		}
 	}
 
+	get date() {
+		return this._date;
+	}
+
+	set date(val) {
+		this._date = date;
+	}
+
 	previousAge() {
 		this.year-=10;
 	}
