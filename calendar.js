@@ -55,7 +55,7 @@ export default class Calendar {
 	}
 
 	set date(val) {
-		this._date = date;
+		this._date = val;
 	}
 
 	previousAge() {
