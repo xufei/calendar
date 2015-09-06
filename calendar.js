@@ -1,17 +1,26 @@
 "use strict";
 
 export default class Calendar {
-	constructor() {
+	constructor(date) {
 		this.years = [];
 		this.months = Calendar._months;
 		this.weekdays = Calendar._weekdays;
 		this.days = [];
 		this.dateMap = new Map();
 
-		var now = new Date();
-		this.year = now.getFullYear();
-		this.month = now.getMonth();
-		this.date = this.dateMap.get(now.getDate());
+		this.currentDate = date || new Date();
+	}
+
+	get currentDate() {
+		return new Date(this._year, this._month, this._date);
+	}
+
+	set currentDate(val) {
+		if (val) {
+			this.year = val.getFullYear();
+			this.month = val.getMonth();
+			this.date = val.getDate();
+		}
 	}
 
 	get year() {
@@ -56,6 +65,7 @@ export default class Calendar {
 
 	set date(val) {
 		this._date = val;
+		this.selectedDate = this.dateMap.get(val);
 	}
 
 	previousAge() {
