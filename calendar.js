@@ -6,7 +6,7 @@ export default class Calendar {
 
 		//this.months = Calendar._months;
 		// 不如这里直接生成二维数组？好纠结啊
-		this.months = Array.from(Array(4), (m, i) => Array.from(Array(3), (n, j) => Calendar._months[i * 3 + j]));
+		this.months = Array.from(Array(4), (m, i) => Array.from(Array(3), (n, j) => i * 3 + j));
 		this.weekdays = Calendar._weekdays;
 
 		this.days = [];
