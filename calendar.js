@@ -56,7 +56,7 @@ export default class Calendar {
 			}
 
 			this.days[Math.floor(day / 7)][day % 7] = dayObj;
-			this.dateMap.set(day - offset + 1, dayObj);
+			this.dateMap.set(day - offset, dayObj);
 		}
 	}
 
