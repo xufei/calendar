@@ -3,8 +3,8 @@
 export default class Calendar {
 	constructor(date) {
 		this.years = [];
-		// 这里直接生成二维数组？好纠结啊
-		this.months = Array.from(Array(4), (m, i) => Array.from(Array(3), (n, j) => i * 3 + j));
+		
+		this.months = Array.from(Array(12), (v, i) => i);
 
 		this.days = [];
 		this.dateMap = new Map();
