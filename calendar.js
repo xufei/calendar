@@ -49,7 +49,7 @@ export default class Calendar {
 		this.dateMap.clear();
 
 		for (let day = offset; day < lastDay.getDate() + offset; day++) {
-			var dayObj = new Day(new Date(this.year, this.month, day - offset + 1), {});
+			let dayObj = new Day(new Date(this.year, this.month, day - offset + 1), {});
 
 			if (!this.days[Math.floor(day / 7)]) {
 				this.days[Math.floor(day / 7)] = [];
