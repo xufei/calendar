@@ -1,6 +1,4 @@
-"use strict";
-
-export default class Calendar {
+export class Calendar {
 	constructor(date) {
 		this.years = [];
 		
@@ -42,8 +40,8 @@ export default class Calendar {
 	set month(val) {
 		this._month = val;
 
-		let offset = new Date(new Date(this._year, val, 1)).getDay();
-		let lastDay = new Date(new Date(this._year, val + 1, 1) - 1);
+		let offset = new Date(new Date(this._year, val, 1).valueOf()).getDay();
+		let lastDay = new Date(new Date(this._year, val + 1, 1).valueOf() - 1);
 
 		this.days = [];
 		this.dateMap.clear();
