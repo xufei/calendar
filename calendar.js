@@ -29,10 +29,12 @@ export default class Calendar {
 	}
 
 	set year(val) {
-		this._year = val;
-
-		let startIndex = Math.floor(val / 10) * 10 + 1;
-		this.years = Array.from(Array(10), (v, k) => k + startIndex);
+		if ((typeof(val) == "number") && (val > 0)) {
+			this._year = val;
+	
+			let startIndex = Math.floor(val / 10) * 10 + 1;
+			this.years = Array.from(Array(10), (v, k) => k + startIndex);
+		}
 	}
 
 	get month() {
@@ -40,23 +42,25 @@ export default class Calendar {
 	}
 
 	set month(val) {
-		this._month = val;
-
-		let offset = new Date(new Date(this._year, val, 1)).getDay();
-		let lastDay = new Date(new Date(this._year, val + 1, 1) - 1);
-
-		this.days = [];
-		this.dateMap.clear();
-
-		for (let day = offset; day < lastDay.getDate() + offset; day++) {
-			let dayObj = new Day(new Date(this.year, this.month, day - offset + 1), {});
-
-			if (!this.days[Math.floor(day / 7)]) {
-				this.days[Math.floor(day / 7)] = [];
+		if ((typeof(val) == "number") && (val > 0) && (val < 13)) {
+			this._month = val;
+	
+			let offset = new Date(new Date(this._year, val, 1)).getDay();
+			let lastDay = new Date(new Date(this._year, val + 1, 1) - 1);
+	
+			this.days = [];
+			this.dateMap.clear();
+	
+			for (let day = offset; day < lastDay.getDate() + offset; day++) {
+				let dayObj = new Day(new Date(this.year, this.month, day - offset + 1), {});
+	
+				if (!this.days[Math.floor(day / 7)]) {
+					this.days[Math.floor(day / 7)] = [];
+				}
+	
+				this.days[Math.floor(day / 7)][day % 7] = dayObj;
+				this.dateMap.set(day - offset + 1, dayObj);
 			}
-
-			this.days[Math.floor(day / 7)][day % 7] = dayObj;
-			this.dateMap.set(day - offset + 1, dayObj);
 		}
 	}
 
@@ -65,8 +69,10 @@ export default class Calendar {
 	}
 
 	set date(val) {
-		this._date = val;
-		this.selectedDate = this.dateMap.get(val);
+		if ((typeof(val) == "number") && (val > 0) && (val < 32)) {
+			this._date = val;
+			this.selectedDate = this.dateMap.get(val);
+		}
 	}
 
 	previousAge() {
