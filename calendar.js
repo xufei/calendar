@@ -37,7 +37,7 @@ export class Calendar {
 	}
 
 	set month(val) {
-		if ((typeof(val) == "number") && (val > 0) && (val < 13)) {
+		if ((typeof(val) == "number") && (val >= 0) && (val < 12)) {
 			this._month = val;
 	
 			let offset = new Date(new Date(this._year, val, 1).valueOf()).getDay();
