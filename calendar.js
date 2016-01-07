@@ -83,9 +83,11 @@ export class Calendar {
 
 	previousMonth() {
 		this.month--;
+		this.month = this.month;
 	}
 
 	nextMonth() {
 		this.month++;
+		this.month = this.month;
 	}
 }
