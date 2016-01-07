@@ -82,12 +82,22 @@ export class Calendar {
 	}
 
 	previousMonth() {
-		this.month--;
-		this.month = this.month;
+		if (this.month == 0) {
+			this.month = 11;
+			this.year--;
+		}
+		else {
+			this.month--;
+		}
 	}
 
 	nextMonth() {
-		this.month++;
-		this.month = this.month;
+		if (this.month == 11) {
+			this.month = 0;
+			this.year++;
+		}
+		else {
+			this.month++;
+		}
 	}
 }
