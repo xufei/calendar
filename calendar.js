@@ -3,8 +3,6 @@ export class Calendar {
 		this.years = [];
 		this.months = Array.from(Array(12), (v, i) => i);
 		this.days = [];
-
-		this.currentDate = date || new Date();
 	}
 
 	get currentDate() {
